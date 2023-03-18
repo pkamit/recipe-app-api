@@ -13,10 +13,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      # - name: Checkout
-      #   uses: action/checkout@v2
-      #   with:
-      #     repository: pkamit/recipe-app-api 
+      - name: Checkout
+        uses: action/checkout@v2
+        with:
+          repository: pkamit/recipe-app-api
+          repoToken: ${{ secrets.REC_TOKEN }} 
       - name: Test
         run: docker-compose run --rm app sh -c "python manage.py test"
       - name: Lint
